@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Search</h1>
+
+<form method="GET" action="{% url 'search_hotels' %}">
+  <input type="text" name="dish" placeholder="Search for a dish">
+  <button type="submit">Search</button>
+</form>
+
+<h2>Hotels with {{ dish }}:</h2>
+
+{% if hotels %}
+  <ul>
+  {% for hotel in hotels %}
+    <li>{{ hotel.name }}</li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No hotels found with {{ dish }}.</p>
+{% endif %}
+
+{% endblock content %}
